@@ -1,0 +1,11 @@
+language: java
+jdk:
+  - openjdk11
+before_install:
+  - chmod +x mvnw
+script:
+  - mvn clean install
+cache:
+  directories
+notifications:
+  email: false
