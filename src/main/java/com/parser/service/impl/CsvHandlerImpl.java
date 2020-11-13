@@ -15,10 +15,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class CsvHandlerImpl implements CsvHandler<Product> {
+    private final Logger logger = Logger.getLogger(CsvHandlerImpl.class.getName());
     private final ProductMapper productMapper;
 
     public CsvHandlerImpl(ProductMapper productMapper) {
@@ -31,6 +34,7 @@ public class CsvHandlerImpl implements CsvHandler<Product> {
         Path uri = Paths.get(AppProperty.get("fileDir").replace("->", File.separator));
         Path dir = projectPath.resolve(uri).resolve(fileName);
         create(dir, fileName, product);
+        logger.info("File " + fileName + "was created");
         return new File(String.valueOf(dir));
     }
 
@@ -47,6 +51,7 @@ public class CsvHandlerImpl implements CsvHandler<Product> {
                             + path.toString());
                 }
             }
+            logger.info("File " + fileName + "was created");
             return file;
         }
         return new File(String.valueOf(path.resolve(fileName)));
@@ -57,6 +62,7 @@ public class CsvHandlerImpl implements CsvHandler<Product> {
         String[] data = productMapper.toFieldArray(product);
         try (CSVWriter writer = new CSVWriter(new FileWriter(file.getAbsolutePath(), true))) {
             writer.writeNext(data, false);
+
         } catch (IOException e) {
             throw new RuntimeException("Failed to instantiate CSVWriter. Please check file path");
         }
@@ -65,6 +71,7 @@ public class CsvHandlerImpl implements CsvHandler<Product> {
     @Override
     public void write(List<Product> data, File file) {
         data.forEach(array -> write(array, file));
+        logger.info("Data was saves successfully");
     }
 
     @Override
