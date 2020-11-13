@@ -16,6 +16,6 @@ public class Main {
         String uroda = AppProperty.get("category.uroda");
         String property = AppProperty.get("class.parseTarget");
 
-        propertyParser.getAllProductsByProp(property,zdorovie, uroda, electronica);
+        propertyParser.getAllProductsByProp(property, zdorovie, uroda, electronica);
     }
 }

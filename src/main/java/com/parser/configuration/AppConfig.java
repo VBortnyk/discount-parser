@@ -7,3 +7,4 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {"com.parser.service", "com.parser.mapper"})
 public class AppConfig {
 }
+

@@ -25,10 +25,11 @@ and you will obtain a CSV file with detailed information about discount products
 #### <a name="purpose">For developers</a>
 1. Open the project in your IDE
 2. Choose sdk 11.0  or higher in Project Structure
-3. Configure logging properties in src/main/resources/log4j.properties 
-4. Configure destination directory to store files created during runtime process in you don't want to use a default destination
-5. Chose the category you are interested in and configure corresponding properties in src/main/resources/app.properties
-6. Run the project
+3. Configure ApplicationContext in src/main/java/com/parser/configuration/AppConfig.java
+4. Configure logging properties in src/main/resources/log4j.properties 
+5. Configure destination directory to store files created during runtime process in you don't want to use a default destination
+6. Chose the category you are interested in and configure corresponding properties in src/main/resources/app.properties
+7. Run the project
 
 By default, the project parses discount products from three categories. You can change the categories 
 you are interested in by configuring corresponding properties in app.properties file. As a result of project execution
